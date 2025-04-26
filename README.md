@@ -4,6 +4,8 @@ SunMonitor is a PHP Server Monitoring class that monitors servers by using a bas
 
 You can use this class to monitor your project server(s) and show results instantly (online) on a special web page to your visitors. Also, you can create a CronJob and get an email alert when your server(s) is down/unreachable after integrating the SunMail class into this class.
 
+`Technical Document:` https://www.deepwiki.com/msbatal/PHP-Server-Monitoring-Class
+
 <hr>
 
 ### Table of Contents
