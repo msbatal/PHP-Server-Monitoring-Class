@@ -6,6 +6,8 @@ You can use this class to monitor your project server(s) and show results instan
 
 `Technical Document:` https://www.deepwiki.com/msbatal/PHP-Server-Monitoring-Class
 
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/msbatal/PHP-Server-Monitoring-Class)
+
 <hr>
 
 ### Table of Contents
