@@ -9,7 +9,7 @@
  * @copyright Copyright (c) 2024, Sunhill Technology <www.sunhillint.com>
  * @license   https://opensource.org/licenses/lgpl-3.0.html The GNU Lesser General Public License, version 3.0
  * @link      https://github.com/msbatal/PHP-Server-Monitoring-Class
- * @version   1.3.7
+ * @version   1.3.8
  */
 
 class SunMonitor
@@ -56,9 +56,6 @@ class SunMonitor
      * @param boolean $output
      */
     public function __construct($hosts = null, $names = null, $output = false) {
-        set_exception_handler(function($exception) {
-            echo '<b>[SunClass] Exception:</b> ' . $exception->getMessage();
-        });
         if (is_array($hosts)) { // assign ip addresses/domains to the array
             $this->hostList = $hosts;
         } else { // insert ip address/domain into the array
@@ -81,7 +78,7 @@ class SunMonitor
      */
     private function validate() {
         if (count($this->hostList) == 0) {
-            throw new \Exception('Ip Address/Domain is not set.');
+            throw new Exception('Ip Address/Domain is not set.');
         }
         $this->validateHost(); // ip/domain validation
         if (count($this->hostList) != count($this->nameList)) {
@@ -130,7 +127,7 @@ class SunMonitor
      */
     private function saveLog() {
         if ($this->fileOutput != true) {
-            throw new \Exception('Logging is turned off in settings.');
+            throw new Exception('Logging is turned off in settings.');
         }
         $jsonFile = 'logs/' . date('Ymd') . '.json'; // json file location and name
         if (file_exists($jsonFile)) { // update file with new records (if exists) 
@@ -184,14 +181,14 @@ class SunMonitor
     public function getLogs($date = null, $order = 0) {
         if (empty($date)) {
             if ($this->fileOutput != true) {
-                throw new \Exception('Logging is turned off in settings.');
+                throw new Exception('Logging is turned off in settings.');
             }
             $date = date('Y-m-d'); // if not set a specific date
         }
         $date = str_replace('-', '', $date);
         $jsonFile = 'logs/' . $date . '.json';
         if (!file_exists($jsonFile)) {
-            throw new \Exception('No such file/directory.');
+            throw new Exception('No such file/directory.');
         }
         $content = file_get_contents($jsonFile); // read log file content
         $jsonData = json_decode($content, true); // convert content to array
